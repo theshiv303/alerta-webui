@@ -33,7 +33,7 @@
           </v-btn>
         </div>
 
-        <div class="mb-2">
+        <div v-for="provider in providers" :key="provider.id" class="mb-2">
           <v-btn
             block
             color="white"
@@ -41,23 +41,9 @@
             class="pa-0"
           >
             <v-icon class="login-icon">
-              fab fa-github
+              {{ provider.icon }}
             </v-icon>
-            Sign in with GitHub
-          </v-btn>
-        </div>
-
-        <div class="mb-2">
-          <v-btn
-            block
-            color="white"
-            large
-            class="pa-0"
-          >
-            <v-icon class="login-icon">
-              fab fa-gitlab
-            </v-icon>
-            Sign in with GitLab
+            {{ provider.text}}
           </v-btn>
         </div>
 
@@ -195,7 +181,18 @@ export default {
     password: null,
     showPassword: false,
     message: null,
-    error: null
+    error: null,
+
+    providers: [
+      {id: 'azure', text: 'Sign in with Azure', icon: 'fab fa-windows'},
+      {id: 'cognito', text: 'Sign in with Amazon Cognito', icon: 'fab fa-aws'},
+      {id: 'github', text: 'Sign in with GitHub', icon: 'fab fa-github'},
+      {id: 'gitlab', text: 'Sign in with GitLab', icon: 'fab fa-gitlab'},
+      {id: 'keycloak', text: 'Sign in with Keycloak', icon: 'fas fa-key'},
+      {id: 'openid', text: 'Sign in with OpenID Connect', icon: 'fab fa-openid'},
+      {id: 'pingfederate', text: 'Sign in with PingFederate', icon: 'fas fa-id-badge'},
+      {id: 'saml2', text: 'Sign in with SAML2', icon: 'fas fa-id-badge'},
+    ]
   }),
   computed: {
     isBasicAuth() {
