@@ -19,15 +19,24 @@
           {{ $t('LoginToContinue') }}
         </p>
         <div class="mb-2">
-        <v-btn block color="#4285F4" dark large class="pa-0">
-          <img id="g-icon" src="/images/btn_google_light_normal_ios.svg">
-          Sign in with Google
-        </v-btn>
+          <v-btn
+            block
+            color="#4285F4"
+            dark
+            large
+            class="pa-0"
+          >
+            <img
+              id="g-icon"
+              src="/images/btn_google_light_normal_ios.svg"
+            >
+            Sign in with Google
+          </v-btn>
         </div>
         
         <v-divider
           class="my-3"
-        ></v-divider>
+        />
 
         <v-form @submit.prevent="login()">
           <v-text-field
