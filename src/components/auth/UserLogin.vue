@@ -40,12 +40,20 @@
             large
             class="pa-0"
           >
-            <img
-              id="github-login-icon"
-              src="/images/GitHub-Mark-64px.png"
-              width="36px"
-            >
+            <v-icon class="login-icon">fab fa-github</v-icon>
             Sign in with GitHub
+          </v-btn>
+        </div>
+
+        <div class="mb-2">
+          <v-btn
+            block
+            color="white"
+            large
+            class="pa-0"
+          >
+            <v-icon class="login-icon">fab fa-gitlab</v-icon>
+            Sign in with GitLab
           </v-btn>
         </div>
 
@@ -254,8 +262,8 @@ export default {
   position: absolute;
   left: 0;
 }
-#github-login-icon {
+.login-icon {
   position: absolute;
-  left: 4px;
+  left: 8px;
 }
 </style>
