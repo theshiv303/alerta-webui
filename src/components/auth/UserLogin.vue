@@ -37,8 +37,8 @@
             </v-icon>
             <img
               v-if="provider.image"
-              id="google-login-icon"
               :src="provider.image"
+              :class="['login-icon-' + provider.id]"
             >
             {{ provider.text }}
           </v-btn>
@@ -181,10 +181,10 @@ export default {
     error: null,
 
     providers: [
-      {id: 'azure', text: 'Sign in with Azure', color: '', icon: 'fab fa-windows'},
-      {id: 'cognito', text: 'Sign in with Amazon Cognito', color: '', icon: 'fab fa-aws'},
-      {id: 'github', text: 'Sign in with GitHub', color: 'white', icon: 'fab fa-github'},
-      {id: 'gitlab', text: 'Sign in with GitLab', color: 'white', icon: 'fab fa-gitlab'},
+      {id: 'azure', text: 'Sign in with Microsoft', color: 'white', image: '/images/ms-symbollockup_mssymbol_19.svg'},
+      {id: 'cognito', text: 'Sign in with Amazon Cognito', color: '#ff9900', icon: 'fab fa-aws'},
+      {id: 'github', text: 'Sign in with GitHub', color: '#6cc644', icon: 'fab fa-github'},
+      {id: 'gitlab', text: 'Sign in with GitLab', color: '#fca326', icon: 'fab fa-gitlab'},
       {id: 'google', text: 'Sign in with Google', color: '#4285F4', image: '/images/btn_google_light_normal_ios.svg'},
       {id: 'keycloak', text: 'Sign in with Keycloak', color: '', icon: 'fas fa-key'},
       {id: 'openid', text: 'Sign in with OpenID Connect', color: '', icon: 'fab fa-openid'},
@@ -257,7 +257,11 @@ export default {
 </script>
 
 <style>
-#google-login-icon {
+img.login-icon-azure {
+  position: absolute;
+  left: 12px;
+}
+img.login-icon-google {
   position: absolute;
   left: 0;
 }
