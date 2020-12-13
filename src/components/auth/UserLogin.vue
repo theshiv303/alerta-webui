@@ -29,12 +29,16 @@
             large
             class="pa-0"
           >
-            <v-icon v-if="provider.icon" class="login-icon">
+            <v-icon
+              v-if="provider.icon"
+              class="login-icon"
+            >
               {{ provider.icon }}
             </v-icon>
-                        <img v-if="provider.image"
+            <img
+              v-if="provider.image"
               id="google-login-icon"
-              v-bind:src="provider.image"
+              :src="provider.image"
             >
             {{ provider.text }}
           </v-btn>
