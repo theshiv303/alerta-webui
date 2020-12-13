@@ -22,18 +22,33 @@
           <v-btn
             block
             color="#4285F4"
-            dark
             large
             class="pa-0"
           >
             <img
-              id="g-icon"
+              id="google-login-icon"
               src="/images/btn_google_light_normal_ios.svg"
             >
             Sign in with Google
           </v-btn>
         </div>
-        
+
+        <div class="mb-2">
+          <v-btn
+            block
+            color="white"
+            large
+            class="pa-0"
+          >
+            <img
+              id="github-login-icon"
+              src="/images/GitHub-Mark-64px.png"
+              width="36px"
+            >
+            Sign in with GitHub
+          </v-btn>
+        </div>
+
         <v-divider
           class="my-3"
         />
@@ -235,8 +250,12 @@ export default {
 </script>
 
 <style>
-#g-icon {
+#google-login-icon {
   position: absolute;
   left: 0;
+}
+#github-login-icon {
+  position: absolute;
+  left: 4px;
 }
 </style>
