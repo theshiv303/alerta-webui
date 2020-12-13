@@ -40,7 +40,9 @@
             large
             class="pa-0"
           >
-            <v-icon class="login-icon">fab fa-github</v-icon>
+            <v-icon class="login-icon">
+              fab fa-github
+            </v-icon>
             Sign in with GitHub
           </v-btn>
         </div>
@@ -52,7 +54,9 @@
             large
             class="pa-0"
           >
-            <v-icon class="login-icon">fab fa-gitlab</v-icon>
+            <v-icon class="login-icon">
+              fab fa-gitlab
+            </v-icon>
             Sign in with GitLab
           </v-btn>
         </div>
