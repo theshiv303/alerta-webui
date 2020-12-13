@@ -18,21 +18,6 @@
         <p class="text-xs-center headline font-weight-medium">
           {{ $t('LoginToContinue') }}
         </p>
-        <div class="mb-2">
-          <v-btn
-            block
-            color="#4285F4"
-            large
-            class="pa-0"
-          >
-            <img
-              id="google-login-icon"
-              src="/images/btn_google_light_normal_ios.svg"
-            >
-            Sign in with Google
-          </v-btn>
-        </div>
-
         <div
           v-for="provider in providers"
           :key="provider.id"
@@ -40,13 +25,17 @@
         >
           <v-btn
             block
-            color="white"
+            :color="provider.color"
             large
             class="pa-0"
           >
-            <v-icon class="login-icon">
+            <v-icon v-if="provider.icon" class="login-icon">
               {{ provider.icon }}
             </v-icon>
+                        <img v-if="provider.image"
+              id="google-login-icon"
+              v-bind:src="provider.image"
+            >
             {{ provider.text }}
           </v-btn>
         </div>
@@ -188,14 +177,15 @@ export default {
     error: null,
 
     providers: [
-      {id: 'azure', text: 'Sign in with Azure', icon: 'fab fa-windows'},
-      {id: 'cognito', text: 'Sign in with Amazon Cognito', icon: 'fab fa-aws'},
-      {id: 'github', text: 'Sign in with GitHub', icon: 'fab fa-github'},
-      {id: 'gitlab', text: 'Sign in with GitLab', icon: 'fab fa-gitlab'},
-      {id: 'keycloak', text: 'Sign in with Keycloak', icon: 'fas fa-key'},
-      {id: 'openid', text: 'Sign in with OpenID Connect', icon: 'fab fa-openid'},
-      {id: 'pingfederate', text: 'Sign in with PingFederate', icon: 'fas fa-id-badge'},
-      {id: 'saml2', text: 'Sign in with SAML2', icon: 'fas fa-id-badge'},
+      {id: 'azure', text: 'Sign in with Azure', color: '', icon: 'fab fa-windows'},
+      {id: 'cognito', text: 'Sign in with Amazon Cognito', color: '', icon: 'fab fa-aws'},
+      {id: 'github', text: 'Sign in with GitHub', color: 'white', icon: 'fab fa-github'},
+      {id: 'gitlab', text: 'Sign in with GitLab', color: 'white', icon: 'fab fa-gitlab'},
+      {id: 'google', text: 'Sign in with Google', color: '#4285F4', image: '/images/btn_google_light_normal_ios.svg'},
+      {id: 'keycloak', text: 'Sign in with Keycloak', color: '', icon: 'fas fa-key'},
+      {id: 'openid', text: 'Sign in with OpenID Connect', color: '', icon: 'fab fa-openid'},
+      {id: 'pingfederate', text: 'Sign in with PingFederate', color: '', icon: 'fas fa-id-badge'},
+      {id: 'saml2', text: 'Sign in with SAML2', color: '', icon: 'fas fa-id-badge'},
     ]
   }),
   computed: {
