@@ -33,7 +33,11 @@
           </v-btn>
         </div>
 
-        <div v-for="provider in providers" :key="provider.id" class="mb-2">
+        <div
+          v-for="provider in providers"
+          :key="provider.id"
+          class="mb-2"
+        >
           <v-btn
             block
             color="white"
@@ -43,7 +47,7 @@
             <v-icon class="login-icon">
               {{ provider.icon }}
             </v-icon>
-            {{ provider.text}}
+            {{ provider.text }}
           </v-btn>
         </div>
 
