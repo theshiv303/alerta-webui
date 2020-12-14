@@ -17,17 +17,19 @@
         <p class="text-xs-center headline font-weight-medium">
           {{ $t('LoginToContinue') }}
         </p>
+        {{ providers }}
         <div
           v-for="provider in providers"
-          :key="provider.id"
+          :key="provider.name"
           class="mb-2"
         >
           <v-btn
+            v-if="hasProvider(provider.name)"
             block
             :color="provider.color"
             large
             class="pa-0"
-            @click="authenticate(provider.id)"
+            @click="authenticate(provider.name)"
           >
             <v-icon
               v-if="provider.icon"
@@ -38,7 +40,7 @@
             <img
               v-if="provider.image"
               :src="provider.image"
-              :class="['login-icon-' + provider.id]"
+              :class="['login-icon-' + provider.name]"
             >
             {{ provider.text }}
           </v-btn>
@@ -179,15 +181,15 @@ export default {
     error: null,
 
     providers: [
-      {id: 'azure', text: 'Sign in with Microsoft', color: 'white', image: '/images/ms-symbollockup_mssymbol_19.svg'},
-      {id: 'cognito', text: 'Sign in with Amazon Cognito', color: '#ff9900', icon: 'fab fa-aws'},
-      {id: 'github', text: 'Sign in with GitHub', color: '#6cc644', icon: 'fab fa-github'},
-      {id: 'gitlab', text: 'Sign in with GitLab', color: '#fca326', icon: 'fab fa-gitlab'},
-      {id: 'google', text: 'Sign in with Google', color: '#4285F4', image: '/images/btn_google_light_normal_ios.svg'},
-      {id: 'keycloak', text: 'Sign in with Keycloak', color: '', icon: 'fas fa-key'},
-      {id: 'openid', text: 'Sign in with OpenID Connect', color: '', icon: 'fab fa-openid'},
-      {id: 'pingfederate', text: 'Sign in with PingFederate', color: '', icon: 'fas fa-id-badge'},
-      {id: 'saml2', text: 'Sign in with SAML2', color: '', icon: 'fas fa-id-badge'},
+      {name: 'azure', text: 'Sign in with Microsoft', color: 'white', image: '/images/ms-symbollockup_mssymbol_19.svg'},
+      {name: 'cognito', text: 'Sign in with Amazon Cognito', color: '#ff9900', icon: 'fab fa-aws'},
+      {name: 'github', text: 'Sign in with GitHub', color: '#6cc644', icon: 'fab fa-github'},
+      {name: 'gitlab', text: 'Sign in with GitLab', color: '#fca326', icon: 'fab fa-gitlab'},
+      {name: 'google', text: 'Sign in with Google', color: '#4285F4', image: '/images/btn_google_light_normal_ios.svg'},
+      {name: 'keycloak', text: 'Sign in with Keycloak', color: '', icon: 'fas fa-key'},
+      {name: 'openid', text: 'Sign in with OpenID Connect', color: '', icon: 'fab fa-openid'},
+      {name: 'pingfederate', text: 'Sign in with PingFederate', color: '', icon: 'fas fa-id-badge'},
+      {name: 'saml2', text: 'Sign in with SAML2', color: '', icon: 'fas fa-id-badge'},
     ]
   }),
   computed: {
@@ -209,6 +211,10 @@ export default {
     }
   },
   methods: {
+    hasProvider(provider) {
+      // return this.options['providers'] && this.options['providers'].includes(provider) ? this.options['providers'][provider].clientId : false
+      return true
+    },
     login() {
       let credentials = {
         username: this.username,
@@ -221,7 +227,6 @@ export default {
         .catch(error => this.error = error.response.data.message)
     },
     authenticate(provider) {
-      console.log(provider)
       if (Object.keys(this.options).includes(provider)) {
         this.message = `Authenticating with ${provider} ...`
         this.$store

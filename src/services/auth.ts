@@ -25,7 +25,7 @@ export function vueAuth(config) {
       azure: {
         name: 'Azure Active Directory',
         url: '/auth/azure',
-        clientId: config.client_id,
+        clientId: config.provider === 'azure' ? config.client_id : config.azure_client_id,
         authorizationEndpoint: `https://login.microsoftonline.com/${config.azure_tenant}/oauth2/v2.0/authorize`,
         redirectUri: getRedirectUri(basePath),
         requiredUrlParams: ['scope'],
@@ -39,7 +39,7 @@ export function vueAuth(config) {
       cognito: {
         name: 'Amazon Cognito',
         url: '/auth/openid',
-        clientId: config.client_id,
+        clientId: config.provider === 'cognito' ? config.client_id : config.cognito_client_id,
         authorizationEndpoint: `https://${config.cognito_domain}.auth.${config.aws_region}.amazoncognito.com/login`,
         redirectUri: getRedirectUri(basePath),
         requiredUrlParams: ['scope'],
@@ -53,7 +53,7 @@ export function vueAuth(config) {
       github: {
         name: 'GitHub',
         url: '/auth/github',
-        clientId: config.client_id,
+        clientId: config.provider === 'github' ? config.client_id : config.github_client_id,
         authorizationEndpoint: `${config.github_url}/login/oauth/authorize`,
         redirectUri: getRedirectUri(basePath),
         scope: ['user:email', 'read:org']
@@ -61,7 +61,7 @@ export function vueAuth(config) {
       gitlab: {
         name: 'GitLab',
         url: '/auth/gitlab',
-        clientId: config.client_id,
+        clientId: config.provider === 'gitlab' ? config.client_id : config.gitlab_client_id,
         authorizationEndpoint: `${config.gitlab_url}/oauth/authorize`,
         redirectUri: getRedirectUri(basePath),
         requiredUrlParams: ['scope'],
@@ -75,13 +75,13 @@ export function vueAuth(config) {
       google: {
         name: 'Google',
         url: '/auth/google',
-        clientId: config.client_id,
+        clientId: config.provider === 'google' ? config.client_id : config.google_client_id,
         redirectUri: getRedirectUri(basePath)
       },
       keycloak: {
         name: 'Keycloak',
         url: '/auth/keycloak',
-        clientId: config.client_id,
+        clientId: config.provider === 'keycloak' ? config.client_id : config.keycloak_client_id,
         authorizationEndpoint: `${config.keycloak_url}/auth/realms/${
           config.keycloak_realm
         }/protocol/openid-connect/auth`,
@@ -97,7 +97,7 @@ export function vueAuth(config) {
       openid: {
         name: 'OpenID',
         url: '/auth/openid',
-        clientId: config.client_id,
+        clientId: config.provider === 'openid' ? config.client_id : config.openid_client_id,
         authorizationEndpoint: config.oidc_auth_url,
         redirectUri: getRedirectUri(basePath),
         requiredUrlParams: ['scope'],
